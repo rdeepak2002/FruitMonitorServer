@@ -18,6 +18,9 @@
   },
   "homepage": "https://github.com/Azure-Samples/azure-iot-samples-node#readme",
   "dependencies": {
-    "@azure/event-hubs": "^5.0.0"
+    "@azure/cognitiveservices-customvision-prediction": "^5.1.2",
+    "@azure/cognitiveservices-customvision-training": "^5.2.0",
+    "@azure/event-hubs": "^5.0.0",
+    "axios": "^0.21.1"
   }
 }

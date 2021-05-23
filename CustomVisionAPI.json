@@ -1,6 +1,7 @@
 {
-    "key1": "2545c6cfd86743b7b55ebd6d38490016",
-    "key2": "8cd1672095ec432abd9b89e106485ed9",
-    "endpoint": "https://fruitvision.cognitiveservices.azure.com/",
-    "location": "eastus"
+    "eventHubsCompatibleEndpoint": "sb://ihsuprodblres054dednamespace.servicebus.windows.net/",
+    "eventHubsCompatiblePath": "iothub-ehub-fruithub-11240618-c3fa7f04ea",
+    "iotHubSasKey": "6YX/DiJYZRJrcacBH2sOiDdL5hjgS0d9RJv42/Z6pqo=",
+    "Prediction-Key": "ff56c613f1ae48bba40bc89bbfb3fc9a",
+    "Prediction-URL": "https://fruitvision.cognitiveservices.azure.com/customvision/v3.0/Prediction/a16bd1d4-1eec-495e-82d6-0edbf005757d/classify/iterations/Iteration1/url"
 }

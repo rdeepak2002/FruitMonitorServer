@@ -1,16 +1,8 @@
-// Copyright (c) Microsoft Corporation.
-// Licensed under the MIT Licence.
-
-/*
-  This sample demonstrates how to use the Microsoft Azure Event Hubs Client for JavaScript to
-  read messages sent from a device. Please see the documentation for @azure/event-hubs package
-  for more details at https://www.npmjs.com/package/@azure/event-hubs
-
-  For an example that uses checkpointing, follow up this sample with the sample in the
-  eventhubs-checkpointstore-blob package on GitHub at the following link:
-
-  https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/eventhub/eventhubs-checkpointstore-blob/samples/javascript/receiveEventsUsingCheckpointStore.js
-*/
+const util = require('util');
+const fs = require('fs');
+const TrainingApi = require("@azure/cognitiveservices-customvision-training");
+const PredictionApi = require("@azure/cognitiveservices-customvision-prediction");
+const msRest = require("@azure/ms-rest-js");
 
 const { EventHubConsumerClient } = require("@azure/event-hubs");
 
@@ -37,9 +29,7 @@ const iotHubSasKey = "6YX/DiJYZRJrcacBH2sOiDdL5hjgS0d9RJv42/Z6pqo=";
 // you can skip the Azure CLI commands above, and assign the connection string directly here.
 const connectionString = `Endpoint=${eventHubsCompatibleEndpoint};EntityPath=${eventHubsCompatiblePath};SharedAccessKeyName=service;SharedAccessKey=${iotHubSasKey}`;
 
-var printError = function (err) {
-  console.log(err.message);
-};
+// iot hub:
 
 // Display the message content - telemetry and properties.
 // - Telemetry is sent in the message body
