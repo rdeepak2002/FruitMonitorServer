@@ -10,13 +10,46 @@ const app = express();
 const http = require('http');
 const server = http.createServer(app);
 
+const bodyParser = require("body-parser");
+const cors = require("cors");
+const dbConfig = require("./app/config/db.config");
+
 const { Server } = require("socket.io");
+
+const corsOptions = {
+    origin: "*"
+};
+
+app.use(cors(corsOptions));
+
+// parse requests of content-type - application/json
+app.use(bodyParser.json());
+
+// parse requests of content-type - application/x-www-form-urlencoded
+app.use(bodyParser.urlencoded({ extended: true }));
+
+const db = require("./app/models");
+const Role = db.role;
 
 const io = new Server(server, {
     cors: {
         origin: '*'
     }
 });
+
+db.mongoose
+  .connect(`${dbConfig.HOST}${dbConfig.PASSWORD}@${dbConfig.CLUSTER}/${dbConfig.DB}?retryWrites=true&w=majority`, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+  })
+  .then(() => {
+    console.log("Successfully connect to MongoDB.");
+    initial();
+  })
+  .catch(err => {
+    console.error("Connection error", err);
+    process.exit();
+  });
 
 var printError = function (err) {
     console.log(err.message);
@@ -42,9 +75,12 @@ async function main() {
     });
 }
 
+// routes
 app.get('/', (req, res) => {
-    res.send('<h1>Hello world</h1>');
+    res.send('<h1>Hello... please leave :)</h1>');
 });
+require("./app/routes/auth.routes")(app);
+require("./app/routes/user.routes")(app);
 
 io.on('connection', (socket) => {
     console.log('user connected');
@@ -57,3 +93,39 @@ server.listen(5000, () => {
         console.error("Error running sample:", error);
     });
 });
+
+function initial() {
+    Role.estimatedDocumentCount((err, count) => {
+      if (!err && count === 0) {
+        new Role({
+          name: "user"
+        }).save(err => {
+          if (err) {
+            console.log("error", err);
+          }
+  
+          console.log("added 'user' to roles collection");
+        });
+  
+        new Role({
+          name: "moderator"
+        }).save(err => {
+          if (err) {
+            console.log("error", err);
+          }
+  
+          console.log("added 'moderator' to roles collection");
+        });
+  
+        new Role({
+          name: "admin"
+        }).save(err => {
+          if (err) {
+            console.log("error", err);
+          }
+  
+          console.log("added 'admin' to roles collection");
+        });
+      }
+    });
+  }
