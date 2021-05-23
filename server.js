@@ -11,7 +11,12 @@ const http = require('http');
 const server = http.createServer(app);
 
 const { Server } = require("socket.io");
-const io = new Server(server);
+
+const io = new Server(server, {
+    cors: {
+        origin: '*'
+    }
+});
 
 var printError = function (err) {
     console.log(err.message);
@@ -21,6 +26,7 @@ var printMessages = function (messages) {
     for (const message of messages) {
         console.log(message.body.imageUrl);
         console.log();
+        io.sockets.emit('iotMessage', message.body);
     }
 };
 
@@ -41,11 +47,11 @@ app.get('/', (req, res) => {
 });
 
 io.on('connection', (socket) => {
-    console.log('a user connected');
+    console.log('user connected');
 });
 
-server.listen(3000, () => {
-    console.log('listening on *:3000');
+server.listen(5000, () => {
+    console.log('listening on *:5000');
 
     main().catch((error) => {
         console.error("Error running sample:", error);
