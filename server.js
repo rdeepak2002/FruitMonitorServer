@@ -57,8 +57,8 @@ var printError = function (err) {
 
 var printMessages = function (messages) {
     for (const message of messages) {
-        console.log(message.body.imageUrl);
-        console.log();
+        // console.log(message.body.imageUrl);
+        // console.log();
         io.sockets.emit('iotMessage', message.body);
     }
 };
@@ -83,7 +83,17 @@ require("./app/routes/auth.routes")(app);
 require("./app/routes/user.routes")(app);
 
 io.on('connection', (socket) => {
-    console.log('user connected');
+    // console.log('user connected');
+
+    socket.on('pairRequest', (data) => {
+        console.log("pair request: " + data.deviceId);
+        socket.broadcast.emit('pairRequest', data);
+    });
+
+    socket.on('devicePaired', (data) => {
+        console.log("device paired: " + data.id);
+        socket.broadcast.emit('devicePaired', data);
+    });
 });
 
 server.listen(5000, () => {
