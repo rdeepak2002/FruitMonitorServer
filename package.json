@@ -22,6 +22,8 @@
     "@azure/cognitiveservices-customvision-training": "^5.2.0",
     "@azure/event-hubs": "^5.0.0",
     "axios": "^0.21.1",
-    "firebase-admin": "^9.8.0"
+    "express": "^4.17.1",
+    "firebase-admin": "^9.8.0",
+    "socket.io": "^4.1.2"
   }
 }
