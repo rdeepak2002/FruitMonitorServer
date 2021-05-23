@@ -21,6 +21,7 @@
     "@azure/cognitiveservices-customvision-prediction": "^5.1.2",
     "@azure/cognitiveservices-customvision-training": "^5.2.0",
     "@azure/event-hubs": "^5.0.0",
-    "axios": "^0.21.1"
+    "axios": "^0.21.1",
+    "firebase-admin": "^9.8.0"
   }
 }
