@@ -57,8 +57,14 @@ var printError = function (err) {
 
 var printMessages = function (messages) {
     for (const message of messages) {
-        // console.log(message.body.imageUrl);
-        // console.log();
+        const predictionObject = {};
+
+        predictionObject.deviceId = message.body.deviceInfo.id;
+        predictionObject.ownerId = message.body.deviceInfo.owner;
+        predictionObject.good = message.body.predictions[1];
+        predictionObject.bad = message.body.predictions[0];
+        predictionObject.time = Date.now();
+        
         io.sockets.emit('iotMessage', message.body);
     }
 };
