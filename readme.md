@@ -13,4 +13,4 @@ Deepak Ramalingam & Aarush Umap
 
 ## Important
 
-You have to also run https://github.com/rdeepak2002/FruitMonitorDevice and https://github.com/rdeepak2002/FruitMonitorWebApp for the entire service to be functional. 
+You have to also run https://github.com/rdeepak2002/FruitMonitorDevice on the IoT device and host https://github.com/rdeepak2002/FruitMonitorWebApp for the entire service to be functional. 
