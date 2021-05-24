@@ -1,8 +1,8 @@
 const { EventHubConsumerClient } = require("@azure/event-hubs");
 
-const eventHubsCompatibleEndpoint = "sb://ihsuprodblres054dednamespace.servicebus.windows.net/";
-const eventHubsCompatiblePath = "iothub-ehub-fruithub-11240618-c3fa7f04ea";
-const iotHubSasKey = "6YX/DiJYZRJrcacBH2sOiDdL5hjgS0d9RJv42/Z6pqo=";
+const eventHubsCompatibleEndpoint = "sb://iothub-ns-fruitvisio-11278958-11f4f8d871.servicebus.windows.net/";
+const eventHubsCompatiblePath = "fruitvision2";
+const iotHubSasKey = "2SFsV5G8jo0HaV9XLWF0M1G7CeMDvknucO9cIDWu8FA=";
 const connectionString = `Endpoint=${eventHubsCompatibleEndpoint};EntityPath=${eventHubsCompatiblePath};SharedAccessKeyName=service;SharedAccessKey=${iotHubSasKey}`;
 
 const express = require('express');
@@ -64,6 +64,8 @@ var printMessages = function (messages) {
         predictionObject.good = message.body.predictions[1];
         predictionObject.bad = message.body.predictions[0];
         predictionObject.time = Date.now();
+
+        // console.log(message);
         
         io.sockets.emit('iotMessage', message.body);
     }
