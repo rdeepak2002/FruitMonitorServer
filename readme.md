@@ -1,6 +1,11 @@
 # Fruit Monitor Server
 
-## Get Started
+## Authors
+
+Deepak Ramalingam & Aarush Umap
+
+## How to Run
+
 
 ```npm install```
 
