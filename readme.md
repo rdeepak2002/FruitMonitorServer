@@ -10,3 +10,7 @@ Deepak Ramalingam & Aarush Umap
 ```npm install```
 
 ```npm start```
+
+## Important
+
+You have to also run https://github.com/rdeepak2002/FruitMonitorDevice and https://github.com/rdeepak2002/FruitMonitorWebApp for the entire service to be functional. 
