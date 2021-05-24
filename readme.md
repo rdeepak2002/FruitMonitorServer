@@ -6,7 +6,7 @@ Deepak Ramalingam & Aarush Umap
 
 ## About
 
-Server for FruitVision service.
+Server for the FruitVision service.
 
 ## How to Run
 
